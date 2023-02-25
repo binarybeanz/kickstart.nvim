@@ -140,7 +140,11 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
+  },
+
+  {
+    "williamboman/mason.nvim",
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -466,6 +470,7 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 
 require 'nvim-tree'.setup {}
+require("mason").setup()
 
 require 'kickstart.plugins.indent'
 require 'kickstart.plugins.keymaps'
