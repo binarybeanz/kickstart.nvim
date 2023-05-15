@@ -474,3 +474,22 @@ require("mason").setup()
 
 require 'kickstart.plugins.indent'
 require 'kickstart.plugins.keymaps'
+
+vim.o.relativenumber = true;
+
+vim.o.autoread = true
+
+vim.cmd("highlight Normal guibg=none")
+vim.cmd("highlight NonText ctermbg=none")
+
+require'lspconfig'.pylsp.setup{
+   settings = {
+     pylsp = {
+       plugins = {
+         pycodestyle = {
+           maxLineLength = 140
+         }
+       }
+     }
+   }
+ }
