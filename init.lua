@@ -124,6 +124,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
+    build = ':TSUpdate',
     config = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
@@ -157,6 +158,20 @@ require('lazy').setup({
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   -- { import = 'custom.plugins' },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+
+  { "EdenEast/nightfox.nvim" },
+
+  { "xiyaowong/transparent.nvim" }
+
+
+
 }, {})
 
 -- [[ Setting options ]]
@@ -518,3 +533,17 @@ require'lspconfig'.pylsp.setup{
    }
  }
 
+vim.cmd("colorscheme nightfox")
+vim.cmd("setlocal spell spelllang=en_us")
+
+require("transparent").setup({ -- Optional, you don't have to run setup.
+  groups = { -- table: default groups
+    'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+    'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+    'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+    'EndOfBuffer',
+  },
+  extra_groups = {}, -- table: additional groups that should be cleared
+  exclude_groups = {}, -- table: groups you don't want to clear
+})
