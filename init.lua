@@ -136,8 +136,7 @@ require('lazy').setup({
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
   },
 
   {
@@ -546,7 +545,7 @@ vim.o.autoread = true
 vim.cmd("highlight Normal guibg=none")
 vim.cmd("highlight NonText ctermbg=none")
 
-require'lspconfig'.pylsp.setup{
+vim.lsp.config('pylsp', {
    settings = {
      pylsp = {
        plugins = {
@@ -556,7 +555,7 @@ require'lspconfig'.pylsp.setup{
        }
      }
    }
- }
+ })
 
 vim.cmd("colorscheme nightfox")
 vim.cmd("setlocal spell spelllang=en_us")
