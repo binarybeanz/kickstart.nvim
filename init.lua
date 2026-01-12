@@ -119,15 +119,10 @@ require('lazy').setup({
     end,
   },
 
-  { -- Highlight, edit, and navigate code
+  {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-    config = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
+    lazy = false,
+    build = ':TSUpdate'
   },
 
   {'romgrk/barbar.nvim', dependencies = 'nvim-tree/nvim-web-devicons'},
@@ -321,7 +316,7 @@ vim.keymap.set('n', '<leader>fs', require("telescope").extensions.live_grep_args
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
+require'nvim-treesitter'.setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' },
 
